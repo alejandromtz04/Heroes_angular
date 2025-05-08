@@ -5,9 +5,40 @@
 <h2>My Heroes</h2>
 <ul class="heroes">
     <li *ngFor="let hero of heroes">
-        <p-button type="button">
+        <p-button type="button" (click)="onSelect(hero)">
             <span class="badge">Code: {{ hero.id }} </span>
             <span class="name">Name: {{ hero.name }}</span>
         </p-button>
     </li>
+
 </ul>
+
+
+<!-- CARD CONTAINER -->
+
+
+<div class="card-container" >
+    <li *ngFor="let hero of heroes" >
+        <p-card [style]="{ width: '18.5rem', overflow: 'hidden', transition: 'all 0.3s ease in out', backgroundColor: '#fff'   }"  >
+            <ng-template #header >
+                <img alt="Card" class="w-32 h-30 object-cover" src="assets/imgs/building.jpg"  />
+            </ng-template>
+
+            <ng-template #title> Hero code: </ng-template>
+            <span class="badge">{{ hero.id }} </span>
+
+            <p>
+                <span class="name">Name: {{ hero.name }}</span>
+            </p>
+
+            <app-hero-detail [hero]="selectedHero"></app-hero-detail>
+
+            <ng-template #footer >
+                <div class="flex gap-4 mt-1">
+                    <p-button label="See more info" class="w-full" styleClass="w-full" (click)="onSelect(hero)"  />
+                </div>
+            </ng-template>
+        </p-card>
+    </li>
+    
+</div>
