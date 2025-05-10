@@ -31,7 +31,7 @@
                 <span class="name">Name: {{ hero.name }}</span>
             </p>
 
-            <app-hero-detail [hero]="selectedHero"></app-hero-detail>
+            <app-hero-detail *ngIf="hero === selectedHero"  [hero]="selectedHero"></app-hero-detail>
 
             <ng-template #footer >
                 <div class="flex gap-4 mt-1">
