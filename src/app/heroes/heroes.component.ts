@@ -14,7 +14,7 @@ import { HeroDetailComponent } from "../hero-detail/hero-detail.component";
 @Component({
   selector: 'app-heroes',
   standalone: true,
-  imports: [FormsModule, NgFor, ButtonModule, CardModule, UpperCasePipe, NgIf, HeroDetailComponent],
+  imports: [FormsModule, NgFor, ButtonModule, CardModule, NgIf, HeroDetailComponent],
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.css'
 })
