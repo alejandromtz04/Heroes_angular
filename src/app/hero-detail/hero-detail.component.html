@@ -1,6 +1,32 @@
-<div *ngIf="hero">
-    <h2>{{ hero.name | uppercase }} Details</h2>
-    <div>id: {{ hero.id }}</div>
-    <label for="hero-name">Hero name: </label>
-    <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
+<div *ngIf="hero" class="flex justify-content-center p-4">
+    <div class="w-full sm:w-10 md:w-6 lg:w-4 xl:w-3">
+
+
+        <div class="card p-4 border-round shadow-2 bg-white text-gray-900">
+
+            <h2 class="text-2xl font-semibold mb-3 text-primary text-center">
+                {{ hero.name | uppercase }} Details
+            </h2>
+
+            <div class="mb-3 text-sm text-gray-700 text-center">
+                <strong>ID:</strong> {{ hero.id }}
+            </div>
+            <div class="field">
+                <label for="hero-name" class="block font-medium mb-2">Hero name</label>
+                <input id="hero-name" pInputText type="text" [(ngModel)]="hero.name"
+                    class="w-full bg-white text-gray-900" placeholder="Enter hero name"
+                    aria-describedby="hero-name-help" />
+                <small id="hero-name-help" class="block mt-1 text-gray-600">
+                    Enter your hero name to update.
+                </small>
+            </div>
+
+            <div class="flex justify-content-center mt-4">
+                <p-button label="Go back" icon="pi pi-arrow-left" (click)="goBack()"
+                    styleClass="p-button-secondary bg-green-300 border-green-300"></p-button>
+            </div>
+        </div>
+
+
+    </div>
 </div>
