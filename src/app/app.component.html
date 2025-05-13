@@ -1,8 +1,13 @@
 <p-menubar [model]="menuItems" class="mb-4 shadow-2 border-round  bg-white">
-  <ng-template pTemplate="start">
+  <ng-template pTemplate="end">
+
     <span class="text-xl font-bold text-primary">{{ title }}</span>
+
   </ng-template>
 </p-menubar>
+<h1></h1>
 
-<router-outlet></router-outlet>
 <app-messages></app-messages>
+
+<h1></h1>
+<router-outlet></router-outlet>
