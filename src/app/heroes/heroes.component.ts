@@ -48,7 +48,7 @@ export class HeroesComponent implements OnInit {
 
   onSelect(hero: HeroInterface): void {
     this.selectedHero = hero;
-    this.messageService.addNewMessage(`HeroesComponent: Selected hero id=${hero.id}`);
+    //this.messageService.addNewMessage(`HeroesComponent: Selected hero id=${hero.id}`);
   }
 
 }

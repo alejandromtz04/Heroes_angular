@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeroesComponent } from './heroes/heroes.component';
 import { MessagesComponent } from './messages/messages.component';
-import { MessageService } from './messages/messages.service';
+import { MessageService } from 'primeng/api';
 
 import { MenubarModule } from 'primeng/menubar'
 import { MenuItem } from 'primeng/api';
@@ -10,6 +10,7 @@ import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { NgIf, NgFor } from '@angular/common';
 import { Ripple } from 'primeng/ripple';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,12 +18,14 @@ import { Ripple } from 'primeng/ripple';
   standalone: true,
   imports: [HeroesComponent, MessagesComponent, RouterOutlet, MenubarModule, ButtonModule, NgIf, NgFor, ToastModule, Ripple],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  providers: [MessageService]
 })
 export class AppComponent {
 
   constructor(
-    public readonly messageService: MessageService
+    public readonly messageService: MessageService,
+    private readonly router: Router
   ) { }
   title = 'Heroes of CEPA';
   messages: boolean = false;
@@ -50,6 +53,8 @@ export class AppComponent {
     this.messages = false;
    }
 
-
+   goToMessages() {
+    this.router.navigate(['/messages']);
+  }
 
 }

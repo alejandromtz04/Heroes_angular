@@ -10,6 +10,7 @@ import { Ripple } from 'primeng/ripple';
 
 @Component({
   selector: 'app-messages',
+  standalone: true,
   imports: [
     FormsModule,
     NgIf,
