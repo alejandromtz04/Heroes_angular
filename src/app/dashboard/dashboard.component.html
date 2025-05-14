@@ -1,12 +1,39 @@
-<div class="grid">
-
-    
-    <div *ngFor="let hero of heroes" class="col-12 sm:col-6 md:col-4 lg:col-3">
+<div class="grid p-3">
+    <div *ngFor="let hero of heroes" class="col-12 sm:col-6 md:col-4 lg:col-3 p-2">
         <a routerLink="/detail/{{hero.id}}"
-            class="block p-3 border-round surface-100 hover:surface-200 shadow-1 text-center text-color">
-            {{ hero.name }}
-        </a>
+            class="block p-4 border-round-lg surface-card hover:surface-hover shadow-3 hover:shadow-5 transition-all transition-duration-400 "
+            style="text-decoration: none;">
+            <div class="flex flex-column align-items-center gap-3">
+                <!-- Hero icon/avatar (you can replace with actual hero images) -->
+                <div class="w-6rem h-6rem border-circle bg-gray-800 flex align-items-center justify-content-center">
+                    <i class="pi pi-user text-5xl text-primary">
+                         <img src="assets/imgs/building.jpg" 
+                         [alt]="hero.name + ' image'"
+                         class="w-full h-full object-cover" />
+                    </i>
+                </div>
 
-        
+                <!-- Hero name with nice typography -->
+                <span class="text-xl font-bold text-900 hover:text-0">{{ hero.name }}</span>
+
+                <!-- Optional: Hero details badge -->
+                <span class="text-sm text-500">Click for details</span>
+
+                <!-- Optional: Hero power indicator -->
+                <div class="w-full h-2rem bg-gray-800 border-round overflow-hidden">
+                    <div class="h-full bg-gradient-to-r text-white hover:bg-gray-400 flex align-items-center justify-content-center text-black font-semibold"
+                        [style.width]="(hero.id % 5 + 1) * 20 + '%'">
+                        View more info
+                    </div>
+                </div>
+
+            </div>
+        </a>
     </div>
+</div>
+
+<!-- Optional: Add a title with nice styling -->
+<div class="text-center mb-5">
+    <h1 class="text-6xl font-bold text-800 mb-2">Union Portuaria del pacifico</h1>
+    <p class="text-xl text-600">I have never been fronted</p>
 </div>

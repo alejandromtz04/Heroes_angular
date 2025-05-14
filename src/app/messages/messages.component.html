@@ -1,19 +1,43 @@
-<div class="card" *ngIf="messageService.message.length">
-  <h2 class="mb-3">Messages</h2>
-  <button pButton type="button" label="Clear Data" (click)="messageService.clear()" class="mb-3" ></button>
+<div class="surface-card p-4 border-round-md shadow-2 w-full md:w-8 lg:w-6 mx-auto">
+    <!-- Header -->
+    <div class="flex justify-content-between align-items-center mb-4 p-2 border-bottom-1 surface-border">
+        <h2 class="text-2xl font-bold m-0">Messages</h2>
+        <div class="flex gap-2">
+            <p-button label="Go back" 
+                     icon="pi pi-arrow-left" 
+                     (click)="goBack()"
+                     styleClass="p-button-secondary bg-gray-800  border-gray-800 text-white"></p-button>
+                     <p-toast/>
+                     <p-button label="Clear Data" 
+                     icon="pi pi-trash"
+                     (click)="clearMessages()"
+                     (onClick)="showBottomRight()"
+                     severity="danger"></p-button>
+        </div>
+    </div>
 
-  <!-- Table Header -->
-  <div class="flex font-bold bg-primary-50 p-2 border-bottom border-300">
-    <div class="w-2">#</div>
-    <div class="w-5">Message</div>
-  </div>
+    <!-- Messages Table -->
+    <div *ngIf="messages && myMessagesService.message.length > 0">
+        <!-- Table Header -->
+        <div class="flex font-bold bg-gray-100 p-3 border-bottom-1 surface-border">
+            <div class="col-1">#</div>
+            <div class="col">Message</div>
+        </div>
 
-  <!-- Table Rows -->
-  <div
-    *ngFor="let msg of messageService.message; let i = index"
-    class="flex p-2 border-bottom border-100 align-items-center"
-  >
-    <div class="w-2">{{ i + 1 }}</div>
-    <div class="w-5">{{ msg }}</div>
-  </div>
+        <!-- Table Rows -->
+        <div *ngFor="let msg of myMessagesService.message; let i = index" 
+             class="flex p-3 border-bottom-1 surface-border hover:surface-hover transition-duration-300">
+            <div class="col-1">{{ i + 1 }}</div>
+            <div class="col">{{ msg }}</div>
+        </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="messages && myMessagesService.message.length === 0" 
+         class="flex flex-column align-items-center justify-content-center p-6 text-500 gap-3">
+        <i class="pi pi-inbox text-4xl"></i>
+        <p class="m-0">No messages available</p>
+    </div>
+
+    <p-toast position="bottom-right" key="br" />
 </div>

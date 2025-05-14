@@ -1,4 +1,5 @@
-
+<button type="button" pButton label="View Messages" (click)="goToMessages()" icon="pi pi-envelope" class="flex align-content-center justify-content-center bg-gray-800 border-gray-800"></button>
+<h1></h1>
 <div class="card-container" >
     <li *ngFor="let hero of heroes" >
         <p-card [style]="{ width: '18.5rem', overflow: 'hidden', transition: 'all 0.3s ease in out', backgroundColor: '#fff'   }"  >
@@ -16,9 +17,9 @@
             <!--  <app-hero-detail *ngIf="hero === selectedHero"  [hero]="selectedHero"></app-hero-detail>  -->
 
             <ng-template #footer >
-                <div class="flex gap-4 mt-1">
-                    <p-button label="See more info" class="w-full" styleClass="w-full" (click)="onSelect(hero)"  routerLink="/detail/{{hero.id}}"/>
-                </div>
+                
+                    <p-button label="See more info"  styleClass="w-full bg-gray-800 border-gray-800 border-round" (click)="onSelect(hero)"  routerLink="/detail/{{hero.id}}"/>
+                
             </ng-template>
         </p-card>
     </li>

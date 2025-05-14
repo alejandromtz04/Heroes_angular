@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 
 import { HeroInterface } from './models/heroes.interface';
 import { HEROES } from './mock-heroes';
-import { MessageService } from './messages/messages.service';
+import { MessagesService } from './messages/messages.service';
 
  @Injectable({
     providedIn: 'root',
@@ -11,7 +11,7 @@ import { MessageService } from './messages/messages.service';
 
  export class HeroService {
     constructor(
-        private readonly messageService: MessageService
+        private readonly messagesService: MessagesService
     ) { }
 
     getAllHeroes(): Observable<HeroInterface[]> {
@@ -20,7 +20,7 @@ import { MessageService } from './messages/messages.service';
                 throw new Error('Heroes doesnt exist in the database')
             }
             const heroesList = of(HEROES)
-            this.messageService.addNewMessage("HeroServices: fetched heroes");
+            this.messagesService.addNewMessage("HeroServices: fetched heroes");
             return heroesList
 
         } catch (error) {
@@ -37,7 +37,7 @@ import { MessageService } from './messages/messages.service';
             } 
 
             const hero = HEROES.find(find => find.id === id)!;
-            this.messageService.addNewMessage(`HeroService: fetched hero id=${id}`);
+            this.messagesService.addNewMessage(`HeroService: fetched hero id=${id}`);
             return of(hero)
 
         } catch (error) {

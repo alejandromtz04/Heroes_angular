@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 
-export class MessageService {
+export class MessagesService {
     
-    message: string[] = []
+    public message: string[] = []
 
     addNewMessage(message: string): void {
         this.message.push(message);

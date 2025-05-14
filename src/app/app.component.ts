@@ -27,7 +27,7 @@ export class AppComponent {
     public readonly messageService: MessageService,
     private readonly router: Router
   ) { }
-  title = 'Heroes of CEPA';
+  title = 'Union Portuaria del Pacifico';
   messages: boolean = false;
   visible: boolean = false;
 
@@ -53,8 +53,6 @@ export class AppComponent {
     this.messages = false;
    }
 
-   goToMessages() {
-    this.router.navigate(['/messages']);
-  }
+   
 
 }

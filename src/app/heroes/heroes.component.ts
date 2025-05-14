@@ -6,12 +6,12 @@ import { NgFor } from '@angular/common';
 import { UpperCasePipe } from '@angular/common';
 import { NgIf } from '@angular/common';
 import { HeroService } from '../heroes.service';
-import { MessageService } from '../messages/messages.service';
+import { MessagesService } from '../messages/messages.service';
 
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card'
 import { HeroDetailComponent } from "../hero-detail/hero-detail.component";
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 
 @Component({
@@ -25,7 +25,8 @@ export class HeroesComponent implements OnInit {
   // Properties
   constructor(
     private readonly heroService: HeroService,
-    private readonly messageService: MessageService
+    private readonly myMessagesService: MessagesService,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +41,9 @@ export class HeroesComponent implements OnInit {
   heroes: HeroInterface[] = [];
   selectedHero? : HeroInterface;
 
+  goToMessages() {
+    this.router.navigate(['/messages']);
+  }
 
   getHeroes(): void {
     this.heroService.getAllHeroes()
@@ -48,7 +52,7 @@ export class HeroesComponent implements OnInit {
 
   onSelect(hero: HeroInterface): void {
     this.selectedHero = hero;
-    //this.messageService.addNewMessage(`HeroesComponent: Selected hero id=${hero.id}`);
+    this.myMessagesService.addNewMessage(`HeroesComponent: Selected hero: ${hero.name}`);
   }
 
 }
